@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.personuser.dao.PersonPowerMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.personuser.model.PersonPower" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="personid" property="personid" jdbcType="VARCHAR" />
+    <result column="paytypeid" property="paytypeid" jdbcType="VARCHAR" />
+    <result column="payname" property="payname" jdbcType="VARCHAR" />
+    <result column="paymoney" property="paymoney" jdbcType="DOUBLE" />
+    <result column="expirytime" property="expirytime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, personid, paytypeid, payname, paymoney, expirytime
+  </sql>
+  <select id="selectPersonPowerCiShu" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.personuser.model.PersonPower" >
+    select 
+    count(id) cishu
+    from bs_personpower
+    where userid = #{userid,jdbcType=VARCHAR}
+    <if test="id != null" >
+        AND payname = #{payname,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <insert id="insertPersonPower" parameterType="com.bayside.personopinion.personuser.model.PersonPower" >
+    insert into bs_personpower
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="personid != null" >
+        personid,
+      </if>
+      <if test="paytypeid != null" >
+        paytypeid,
+      </if>
+      <if test="payname != null" >
+        payname,
+      </if>
+      <if test="paymoney != null" >
+        paymoney,
+      </if>
+      <if test="expirytime != null" >
+        expirytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypeid != null" >
+        #{paytypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="payname != null" >
+        #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="expirytime != null" >
+        #{expirytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updatePersonPower" parameterType="com.bayside.personopinion.personuser.model.PersonPower" >
+    update bs_personpower
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="personid != null" >
+        personid = #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypeid != null" >
+        paytypeid = #{paytypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="payname != null" >
+        payname = #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="paymoney != null" >
+        paymoney = #{paymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="expirytime != null" >
+        expirytime = #{expirytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

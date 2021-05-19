@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.subject.dao.PersonmanagemarticleMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="persionid" property="persionid" jdbcType="VARCHAR" />
+    <result column="articleid" property="articleid" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="keyword_rule" property="keywordRule" jdbcType="VARCHAR" />
+    <result column="reportinfo" property="reportinfo" jdbcType="BIT" />
+    <result column="attention" property="attention" jdbcType="BIT" />
+    <result column="warning" property="warning" jdbcType="BIT" />
+    <result column="readsign" property="readsign" jdbcType="BIT" />
+    <result column="briefing" property="briefing" jdbcType="BIT" />
+    <result column="emotion" property="emotion" jdbcType="VARCHAR" />
+    <result column="formats" property="formats" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="pubdate" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="attentiontime" property="attentiontime" jdbcType="TIMESTAMP" />
+    <result column="repeatcount" property="repeatcount" jdbcType="INTEGER" />
+    <result column="commtcount" property="commtcount" jdbcType="INTEGER" />
+    <result column="collection" property="collection" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.bayside.personopinion.subject.bo.PersonArticleFormatsBo">
+    <result column="news_acount" jdbcType="INTEGER" property="newsAcount" />
+    <result column="bbs_acount" jdbcType="INTEGER" property="bbsAcount" />
+    <result column="boke_acount" jdbcType="INTEGER" property="bokeAcount" />
+    <result column="weibo_acount" jdbcType="INTEGER" property="weiboAcount" />
+    <result column="pingmei_acount" jdbcType="INTEGER" property="pingmeiAcount" />
+    <result column="tieba_acount" jdbcType="INTEGER" property="tiebaAcount" />
+    <result column="shipin_acount" jdbcType="INTEGER" property="shipinAcount" />
+    <result column="weixin_acount" jdbcType="INTEGER" property="weixinAcount" />
+    <result column="app_acount" jdbcType="INTEGER" property="appAcount" />
+    <result column="pinglun_acount" jdbcType="INTEGER" property="pinglunAcount" />
+    <result column="other_acount" jdbcType="INTEGER" property="otherAcount" />
+    <result column="trade_acount" jdbcType="INTEGER" property="tradeAcount" />
+    <result column="tv_acount" jdbcType="INTEGER" property="tvAcount" />
+    <result column="bt_acount" jdbcType="INTEGER" property="btAcount" />
+  </resultMap>
+   <resultMap id="AlisResultMap" type="com.bayside.personopinion.subject.bo.PersonArticleAlisBo">
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="infoAcount" jdbcType="INTEGER" property="infoAcount" />
+    <result column="negativeAcount" jdbcType="INTEGER" property="negativeAcount" />
+    <result column="neutralAcount" jdbcType="INTEGER" property="neutralAcount" />
+    <result column="positiveAcount" jdbcType="INTEGER" property="positiveAcount" />
+  </resultMap>
+  <resultMap id="PHistoryResultMap" type="com.bayside.personopinion.subject.bo.GetPersonHistoryBo">
+    <result column="articleid" property="articleid" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="pubdate" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="PersonmanageBoResultMap" type="com.bayside.personopinion.subject.bo.PersonmanageBo">
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="infoAcount" jdbcType="INTEGER" property="infoAcount" />
+    <result column="negativeAcount" jdbcType="INTEGER" property="negativeAcount" />
+    <result column="neutralAcount" jdbcType="INTEGER" property="neutralAcount" />
+    <result column="positiveAcount" jdbcType="INTEGER" property="positiveAcount" />
+  </resultMap>
+  <resultMap id="PersonmanageBoQuShiResultMap" type="com.bayside.personopinion.subject.bo.PersonmanageBoQuShi">
+    <result column="pubdate" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="info_acount" property="info_acount" jdbcType="INTEGER" />
+    <result column="news_acount" property="news_acount" jdbcType="INTEGER" />
+    <result column="bbs_acount" property="bbs_acount" jdbcType="INTEGER" />
+    <result column="boke_acount" property="boke_acount" jdbcType="INTEGER" />
+    <result column="weibo_acount" property="weibo_acount" jdbcType="INTEGER" />
+    <result column="pingmei_acount" property="pingmei_acount" jdbcType="INTEGER" />
+    <result column="weixin_acount" property="weixin_acount" jdbcType="INTEGER" />
+    <result column="tieba_acount" property="tieba_acount" jdbcType="INTEGER" />
+    <result column="shipin_acount" property="shipin_acount" jdbcType="INTEGER" />
+    <result column="app_acount" property="app_acount" jdbcType="INTEGER" />
+    <result column="pinglun_acount" property="pinglun_acount" jdbcType="INTEGER" />
+    <result column="other_acount" property="other_acount" jdbcType="INTEGER" />
+    <result column="abroad_acount" property="abroad_acount" jdbcType="INTEGER" />
+    <result column="trade_acount" property="trade_acount" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="PersonmanageQingGanBoResultMap" type="com.bayside.personopinion.subject.bo.PersonmanageBoQingGan">
+    <result column="info_acount" property="info_acount" jdbcType="INTEGER" />
+    <result column="negative_acount" jdbcType="INTEGER" property="negative_acount" />
+    <result column="neutral_acount" jdbcType="INTEGER" property="neutral_acount" />
+    <result column="positive_acount" jdbcType="INTEGER" property="positive_acount" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, persionid, articleid, userid, keyword_rule, reportinfo, attention, warning, readsign, 
+    briefing, emotion, formats, updatetime, source, title, url, author, pubdate, attentiontime, 
+    repeatcount, commtcount, collection, content
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_personmanage_m_article
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectCollectInfo" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    SELECT pma.id,pma.articleid articleid,sa.tittle title,left(sa.content,200) content,sa.pubdate pubdate,sa.data_source source
+	FROM bs_personmanage_m_article pma 
+	INNER JOIN bs_subject_article sa
+	ON pma.articleid = sa.ID
+	WHERE 1=1
+	AND pma.persionid = #{persionid,jdbcType=VARCHAR}
+	AND pma.userid = #{userid,jdbcType=VARCHAR}
+	and pma.collection=1
+	limit #{start},#{size}
+  </select>
+  
+  
+  <!-- 最新舆情查询 -->
+  <select id="selectMArticleNew" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle">
+  	select pma.id,pma.persionid,pma.articleid,pma.userid,pma.keyword_rule,pma.reportinfo,pma.attention,pma.warning,pma.readsign,
+	sa.emotion,sa.tittle,sa.content,sa.pubdate,sa.data_source,sa.url,sa.author,sa.formats FROM bs_personmanage_m_article pma 
+	INNER JOIN bs_subject_article sa
+	on pma.articleid = sa.ID
+	WHERE pma.persionid = #{persionid,jdbcType=VARCHAR}
+	AND pma.userid = #{userid,jdbcType=VARCHAR}
+	ORDER BY sa.pubdate 
+	LIMIT 100
+  </select>
+  
+  <!-- 查询个人历史舆情信息 -->
+  <select id="SelectMArticleHistory" resultMap="PHistoryResultMap" parameterType="com.bayside.personopinion.subject.bo.GetPersonHistoryBo">
+	SELECT pma.id,pma.articleid articleid,sa.tittle title,sa.content content,sa.pubdate pubdate,sa.data_source source
+	FROM bs_personmanage_m_article pma 
+	INNER JOIN bs_subject_article sa
+	ON pma.articleid = sa.ID
+	WHERE 1=1
+	AND pma.persionid = #{persionid,jdbcType=VARCHAR}
+	AND pma.userid = #{userid,jdbcType=VARCHAR}
+	<if test="tittle != null">
+		AND (sa.tittle LIKE CONCAT(CONCAT('%',#{tittle,jdbcType=VARCHAR}),'%') OR sa.content LIKE CONCAT(CONCAT('%',#{tittle,jdbcType=VARCHAR}),'%'))
+	</if>
+	<if test="formats != null">
+		AND sa.formats = #{formats,jdbcType=VARCHAR}
+	</if>
+	<if test="emotion != null">
+		AND sa.emotion = #{emotion,jdbcType=VARCHAR}
+	</if>
+	<if test="starttime != null">
+		AND sa.updatetime &gt;= #{starttime,jdbcType=VARCHAR} 
+	</if>
+	<if test="endtime != null">
+		AND sa.updatetime &lt; #{endtime,jdbcType=VARCHAR}
+	</if>
+	<if test="timeorder == 1">
+		ORDER BY sa.pubdate
+	</if>
+	<if test="timeorder == 0">
+		ORDER BY sa.pubdate DESC
+	</if>
+	<if test="similarnumorder == 1">
+		ORDER BY sa.similarnum
+	</if>
+	<if test="similarnumorder == 0">
+		ORDER BY sa.similarnum DESC
+	</if>
+	<if test="dependencyorder == 1">
+		ORDER BY pma.dependency
+	</if>
+	<if test="dependencyorder == 0">
+		ORDER BY pma.dependency DESC
+	</if>
+	<if test="timeorder == null and similarnumorder == null and dependencyorder == null">
+		ORDER BY sa.pubdate DESC
+	</if>
+	LIMIT 100
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bs_personmanage_m_article
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    insert into bs_personmanage_m_article (ID, persionid, articleid, 
+      userid, keyword_rule, reportinfo, 
+      attention, warning, readsign, briefing, 
+      emotion, formats, updatetime, 
+      source, title, url, 
+      author, pubdate, attentiontime, 
+      repeatcount, commtcount, collection, 
+      content)
+    values (#{id,jdbcType=VARCHAR}, #{persionid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=VARCHAR}, #{keywordRule,jdbcType=VARCHAR}, #{reportinfo,jdbcType=BIT}, 
+      #{attention,jdbcType=BIT}, #{warning,jdbcType=BIT}, #{readsign,jdbcType=BIT}, #{briefing,jdbcType=BIT}, 
+      #{emotion,jdbcType=VARCHAR}, #{formats,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{source,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{pubdate,jdbcType=TIMESTAMP}, #{attentiontime,jdbcType=TIMESTAMP}, 
+      #{repeatcount,jdbcType=INTEGER}, #{commtcount,jdbcType=INTEGER}, #{collection,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    insert into bs_personmanage_m_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="persionid != null" >
+        persionid,
+      </if>
+      <if test="articleid != null" >
+        articleid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="keywordRule != null" >
+        keyword_rule,
+      </if>
+      <if test="reportinfo != null" >
+        reportinfo,
+      </if>
+      <if test="attention != null" >
+        attention,
+      </if>
+      <if test="warning != null" >
+        warning,
+      </if>
+      <if test="readsign != null" >
+        readsign,
+      </if>
+      <if test="briefing != null" >
+        briefing,
+      </if>
+      <if test="emotion != null" >
+        emotion,
+      </if>
+      <if test="formats != null" >
+        formats,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="pubdate != null" >
+        pubdate,
+      </if>
+      <if test="attentiontime != null" >
+        attentiontime,
+      </if>
+      <if test="repeatcount != null" >
+        repeatcount,
+      </if>
+      <if test="commtcount != null" >
+        commtcount,
+      </if>
+      <if test="collection != null" >
+        collection,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="persionid != null" >
+        #{persionid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleid != null" >
+        #{articleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="keywordRule != null" >
+        #{keywordRule,jdbcType=VARCHAR},
+      </if>
+      <if test="reportinfo != null" >
+        #{reportinfo,jdbcType=BIT},
+      </if>
+      <if test="attention != null" >
+        #{attention,jdbcType=BIT},
+      </if>
+      <if test="warning != null" >
+        #{warning,jdbcType=BIT},
+      </if>
+      <if test="readsign != null" >
+        #{readsign,jdbcType=BIT},
+      </if>
+      <if test="briefing != null" >
+        #{briefing,jdbcType=BIT},
+      </if>
+      <if test="emotion != null" >
+        #{emotion,jdbcType=VARCHAR},
+      </if>
+      <if test="formats != null" >
+        #{formats,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attentiontime != null" >
+        #{attentiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeatcount != null" >
+        #{repeatcount,jdbcType=INTEGER},
+      </if>
+      <if test="commtcount != null" >
+        #{commtcount,jdbcType=INTEGER},
+      </if>
+      <if test="collection != null" >
+        #{collection,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    update bs_personmanage_m_article
+    <set >
+      <if test="persionid != null" >
+        persionid = #{persionid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleid != null" >
+        articleid = #{articleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="keywordRule != null" >
+        keyword_rule = #{keywordRule,jdbcType=VARCHAR},
+      </if>
+      <if test="reportinfo != null" >
+        reportinfo = #{reportinfo,jdbcType=BIT},
+      </if>
+      <if test="attention != null" >
+        attention = #{attention,jdbcType=BIT},
+      </if>
+      <if test="warning != null" >
+        warning = #{warning,jdbcType=BIT},
+      </if>
+      <if test="readsign != null" >
+        readsign = #{readsign,jdbcType=BIT},
+      </if>
+      <if test="briefing != null" >
+        briefing = #{briefing,jdbcType=BIT},
+      </if>
+      <if test="emotion != null" >
+        emotion = #{emotion,jdbcType=VARCHAR},
+      </if>
+      <if test="formats != null" >
+        formats = #{formats,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null" >
+        pubdate = #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attentiontime != null" >
+        attentiontime = #{attentiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeatcount != null" >
+        repeatcount = #{repeatcount,jdbcType=INTEGER},
+      </if>
+      <if test="commtcount != null" >
+        commtcount = #{commtcount,jdbcType=INTEGER},
+      </if>
+      <if test="collection != null" >
+        collection = #{collection,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    update bs_personmanage_m_article
+    set persionid = #{persionid,jdbcType=VARCHAR},
+      articleid = #{articleid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      keyword_rule = #{keywordRule,jdbcType=VARCHAR},
+      reportinfo = #{reportinfo,jdbcType=BIT},
+      attention = #{attention,jdbcType=BIT},
+      warning = #{warning,jdbcType=BIT},
+      readsign = #{readsign,jdbcType=BIT},
+      briefing = #{briefing,jdbcType=BIT},
+      emotion = #{emotion,jdbcType=VARCHAR},
+      formats = #{formats,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      source = #{source,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      pubdate = #{pubdate,jdbcType=TIMESTAMP},
+      attentiontime = #{attentiontime,jdbcType=TIMESTAMP},
+      repeatcount = #{repeatcount,jdbcType=INTEGER},
+      commtcount = #{commtcount,jdbcType=INTEGER},
+      collection = #{collection,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayside.personopinion.subject.model.Personmanagemarticle" >
+    update bs_personmanage_m_article
+    set persionid = #{persionid,jdbcType=VARCHAR},
+      articleid = #{articleid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      keyword_rule = #{keywordRule,jdbcType=VARCHAR},
+      reportinfo = #{reportinfo,jdbcType=BIT},
+      attention = #{attention,jdbcType=BIT},
+      warning = #{warning,jdbcType=BIT},
+      readsign = #{readsign,jdbcType=BIT},
+      briefing = #{briefing,jdbcType=BIT},
+      emotion = #{emotion,jdbcType=VARCHAR},
+      formats = #{formats,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      source = #{source,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      pubdate = #{pubdate,jdbcType=TIMESTAMP},
+      attentiontime = #{attentiontime,jdbcType=TIMESTAMP},
+      repeatcount = #{repeatcount,jdbcType=INTEGER},
+      commtcount = #{commtcount,jdbcType=INTEGER},
+      collection = #{collection,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <!-- 媒体类型圆饼图 -->
+  <select id="selectFormatsNum" resultMap="ResultMap" parameterType="com.bayside.personopinion.subject.bo.PersonmanagemarticleBo" >
+       SELECT
+		IFNULL(MAX(CASE t.formats WHEN 'news' THEN t.formatsNum ELSE 0 END),0) news_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'bbs' THEN t.formatsNum ELSE 0 END),0) bbs_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'blog' THEN t.formatsNum ELSE 0 END),0) boke_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'weibo' THEN t.formatsNum ELSE 0 END),0) weibo_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'print_media' THEN t.formatsNum ELSE 0 END),0) pingmei_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'weixin' THEN t.formatsNum ELSE 0 END),0) weixin_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'tieba' THEN t.formatsNum ELSE 0 END),0) tieba_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'video' THEN t.formatsNum ELSE 0 END),0) shipin_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'app' THEN t.formatsNum ELSE 0 END),0) app_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'comment' THEN t.formatsNum ELSE 0 END),0) pinglun_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'other' THEN t.formatsNum ELSE 0 END),0) other_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'abroad' THEN t.formatsNum ELSE 0 END),0) abroad_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'trade' THEN t.formatsNum ELSE 0 END),0) trade_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'tv' THEN t.formatsNum ELSE 0 END),0) tv_acount,
+		IFNULL(MAX(CASE t.formats WHEN 'bt' THEN t.formatsNum ELSE 0 END),0) bt_acount
+		FROM (
+		SELECT formats,COUNT(formats) formatsNum ,DATE(pubdate) pubdate FROM bs_personmanage_m_article 
+		WHERE persionid = #{persionid,jdbcType=VARCHAR} and pubdate &gt;= #{startTime,jdbcType=TIMESTAMP}
+		group by formats
+		) t
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+  </select>
+  <!--当天的舆情趋势分析 -->
+   <select id="dayselectQushiAlis" resultMap="AlisResultMap" parameterType="com.bayside.personopinion.subject.bo.PersonmanagemarticleBo">
+        SELECT tt.updatetime,SUM(tt.infoAcount) infoAcount,
+			MAX(CASE tt.emotion WHEN "-2" THEN tt.infoAcount ELSE 0 END) negativeAcount,
+			MAX(CASE tt.emotion WHEN "0" THEN tt.infoAcount ELSE 0 END) neutralAcount,
+			MAX(CASE tt.emotion WHEN "1" THEN tt.infoAcount ELSE 0 END) positiveAcount
+			FROM (
+			SELECT t.updatetime,t.emotion,IFNULL(SUM(emotionNum),0) infoAcount
+			FROM (
+			SELECT DATE_FORMAT(pubdate,'%Y-%m-%d %H') updatetime,emotion,IFNULL(COUNT(1),0) emotionNum FROM bs_personmanage_m_article
+			WHERE persionid = #{persionid}
+				
+            <if test="startTime != null and startTime !=''" >
+               and DATE_FORMAT(pubdate,'%Y-%m-%d %H') &gt;= #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''" >
+              and DATE_FORMAT(pubdate,'%Y-%m-%d') &lt;= #{endTime}
+             </if>
+	        
+				GROUP BY DATE_FORMAT(pubdate,'%Y-%m-%d %H'), emotion
+				)t
+				GROUP BY t.updatetime,t.emotion
+				)tt
+				GROUP BY tt.updatetime
+   </select>
+ 
+   <select id="selectQushiAlis" resultMap="AlisResultMap" parameterType="com.bayside.personopinion.subject.bo.PersonmanagemarticleBo">
+        SELECT tt.updatetime,SUM(tt.infoAcount) infoAcount,
+			MAX(CASE tt.emotion WHEN "-2" THEN tt.infoAcount ELSE 0 END) negativeAcount,
+			MAX(CASE tt.emotion WHEN "0" THEN tt.infoAcount ELSE 0 END) neutralAcount,
+			MAX(CASE tt.emotion WHEN "1" THEN tt.infoAcount ELSE 0 END) positiveAcount
+			FROM (
+			SELECT t.updatetime,t.emotion,IFNULL(SUM(emotionNum),0) infoAcount
+			FROM (
+			SELECT DATE_FORMAT(pubdate,'%Y-%m-%d %H') updatetime,emotion,IFNULL(COUNT(1),0) emotionNum FROM bs_personmanage_m_article
+			WHERE persionid = #{persionid}
+				
+            <if test="startTime != null and startTime !=''" >
+               and pubdate &gt;= #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''" >
+              and pubdate &lt;= #{endTime}
+             </if>
+	        
+				GROUP BY DATE_FORMAT(pubdate,'%Y-%m-%d %H'), emotion
+				)t
+				GROUP BY t.updatetime,t.emotion
+				)tt
+				GROUP BY tt.updatetime
+   </select>
+   
+   <!-- 获取首发媒体 -->
+   <select id="getfristmedia" parameterType="com.bayside.personopinion.subject.bo.PersonmanageBo" resultMap="PersonmanageBoResultMap">
+		SELECT ma.id mid,a.ID,ma.formats,MIN(ma.pubdate) pubdate,ma.source,a.tittle
+ 		from (
+		  SELECT id,formats,pubdate,articleid,source
+		   from bs_personmanage_m_article
+		    WHERE
+		    persionid=#{persionid} 
+		   AND DATE(pubdate) &gt;=#{startTime}
+		   AND DATE(pubdate) &lt;=#{endTime}
+		   GROUP BY formats
+		 )as ma inner join bs_subject_article as a on ma.articleid=a.id group by ma.formats
+	</select>
+	
+   <!-- 获取信息发布排行 -->
+   <select id="getPubmsgtop" parameterType="com.bayside.personopinion.subject.bo.PersonmanageBo" resultMap="PersonmanageBoResultMap">
+		SELECT  articleid, source,COUNT(source) num FROM bs_personmanage_m_article
+            WHERE persionid=#{persionid}
+			AND pubdate &gt;=#{startTime}
+			AND pubdate &lt;=#{endTime}
+	        GROUP BY source
+			ORDER BY num DESC 
+		LIMIT 10
+	</select>
+	
+	<!-- 获取信息发布排行 -->
+   <select id="getMediatrend" parameterType="com.bayside.personopinion.subject.bo.PersonmanageBoQuShi" resultMap="PersonmanageBoQuShiResultMap">
+		SELECT t.pubdate,
+			IFNULL(SUM(formatsNum),0) info_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'news' THEN t.formatsNum ELSE 0 END),0) news_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'bbs' THEN t.formatsNum ELSE 0 END),0) bbs_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'blog' THEN t.formatsNum ELSE 0 END),0) boke_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'weibo' THEN t.formatsNum ELSE 0 END),0) weibo_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'print_media' THEN t.formatsNum ELSE 0 END),0) pingmei_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'weixin' THEN t.formatsNum ELSE 0 END),0) weixin_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'tieba' THEN t.formatsNum ELSE 0 END),0) tieba_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'video' THEN t.formatsNum ELSE 0 END),0) shipin_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'app' THEN t.formatsNum ELSE 0 END),0) app_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'comment' THEN t.formatsNum ELSE 0 END),0) pinglun_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'other' THEN t.formatsNum ELSE 0 END),0) other_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'tieba' THEN t.formatsNum ELSE 0 END),0) tieba_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'abroad' THEN t.formatsNum ELSE 0 END),0) abroad_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'trade' THEN t.formatsNum ELSE 0 END),0) trade_acount
+			FROM (
+			SELECT DATE(pubdate) pubdate,formats ,COUNT(formats) formatsNum FROM bs_personmanage_m_article 
+			WHERE persionid = #{persionid}
+	            AND  
+	            pubdate &gt;=#{startTime}  
+	            AND  
+	            pubdate &lt;=#{endTime}
+			GROUP BY date(pubdate),formats
+			)t
+		GROUP BY t.pubdate
+	</select>
+	<!-- 获取信息发布排行 -->
+   <select id="getMediatrendDay" parameterType="com.bayside.personopinion.subject.bo.PersonmanageBoQuShi" resultMap="PersonmanageBoQuShiResultMap">
+		SELECT DATE_FORMAT(t.pubdate,'%H') pubdate,
+			IFNULL(SUM(formatsNum),0) info_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'news' THEN t.formatsNum ELSE 0 END),0) news_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'bbs' THEN t.formatsNum ELSE 0 END),0) bbs_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'blog' THEN t.formatsNum ELSE 0 END),0) boke_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'weibo' THEN t.formatsNum ELSE 0 END),0) weibo_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'print_media' THEN t.formatsNum ELSE 0 END),0) pingmei_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'weixin' THEN t.formatsNum ELSE 0 END),0) weixin_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'tieba' THEN t.formatsNum ELSE 0 END),0) tieba_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'video' THEN t.formatsNum ELSE 0 END),0) shipin_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'app' THEN t.formatsNum ELSE 0 END),0) app_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'comment' THEN t.formatsNum ELSE 0 END),0) pinglun_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'other' THEN t.formatsNum ELSE 0 END),0) other_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'tieba' THEN t.formatsNum ELSE 0 END),0) tieba_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'abroad' THEN t.formatsNum ELSE 0 END),0) abroad_acount,
+			IFNULL(MAX(CASE t.formats WHEN 'trade' THEN t.formatsNum ELSE 0 END),0) trade_acount
+			FROM (
+			SELECT DATE_FORMAT(pubdate,'%Y-%m-%d %H') pubdate,formats ,COUNT(formats) formatsNum FROM bs_personmanage_m_article 
+			WHERE persionid = #{persionid}
+	            AND  
+	            pubdate &gt;=#{startTime}  
+	            AND  
+	            pubdate &lt;=#{endTime}
+			GROUP BY DATE_FORMAT(pubdate,'%Y-%m-%d %H'),formats
+			)t
+		GROUP BY t.pubdate
+	</select>
+	
+	<!-- 情感倾向分析 -->
+   <select id="getEmotionalAnalysis" parameterType="com.bayside.personopinion.subject.bo.PersonmanageBoQingGan" resultMap="PersonmanageQingGanBoResultMap">
+		SELECT SUM(tt.infoAcount) info_acount,
+			MAX(CASE tt.emotion WHEN "-2" THEN tt.infoAcount ELSE 0 END) negative_acount,
+			MAX(CASE tt.emotion WHEN "0" THEN tt.infoAcount ELSE 0 END) neutral_acount,
+			MAX(CASE tt.emotion WHEN "1" THEN tt.infoAcount ELSE 0 END) positive_acount
+			FROM (
+			SELECT t.emotion,IFNULL(SUM(emotionNum),0) infoAcount
+			FROM (
+			SELECT emotion,IFNULL(COUNT(1),0) emotionNum FROM bs_personmanage_m_article 
+			WHERE persionid = #{persionid}
+	            AND  
+	            pubdate &gt;=#{startTime}  
+	            AND  
+	            pubdate &lt;=#{endTime}
+			GROUP BY emotion
+			)t
+			GROUP BY t.emotion
+			)tt
+	</select>
+	
+</mapper>

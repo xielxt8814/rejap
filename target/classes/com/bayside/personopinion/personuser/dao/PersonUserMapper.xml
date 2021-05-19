@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.personuser.dao.PersonUserMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.personuser.model.PersonUser" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="registertime" property="registertime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="isvip" property="isvip" jdbcType="INTEGER" />
+    <result column="isqq" property="isqq" jdbcType="VARCHAR" />
+    <result column="isweixin" property="isweixin" jdbcType="VARCHAR" />
+    <result column="isweibo" property="isweibo" jdbcType="VARCHAR" />
+    <result column="registerip" property="registerip" jdbcType="VARCHAR" />
+    <result column="registerdevice" property="registerdevice" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="weibouid" property="weibouid" jdbcType="VARCHAR" />
+    <result column="wechatuid" property="wechatuid" jdbcType="VARCHAR" />
+    <result column="qquid" property="qquid" jdbcType="VARCHAR" />
+    <result column="vipexpiredtime" property="vipexpiredtime" jdbcType="TIMESTAMP" />
+    <result column="personid" property="personid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, registertime, endtime, status, isvip, isqq, isweixin, isweibo, registerip, password, telephone,
+    registerdevice, weibouid, wechatuid, qquid, vipexpiredtime, personid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_personuser
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectPersonUserList" resultMap="BaseResultMap">
+    select password, telephone from bs_personuser
+  </select>
+  
+  <select id="selectByPrimaryPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select password, telephone from bs_personuser
+    where telephone = #{telephone,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="checkUserlogin" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_personuser
+    where telephone= #{telephone,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bs_personuser
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    insert into bs_personuser (id, name, registertime, 
+      endtime, status, isvip, 
+      isqq, isweixin, isweibo, 
+      registerip, registerdevice)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{isvip,jdbcType=INTEGER}, 
+      #{isqq,jdbcType=VARCHAR}, #{isweixin,jdbcType=VARCHAR}, #{isweibo,jdbcType=VARCHAR}, 
+      #{registerip,jdbcType=VARCHAR}, #{registerdevice,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    insert into bs_personuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="registertime != null" >
+        registertime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isvip != null" >
+        isvip,
+      </if>
+      <if test="isqq != null" >
+        isqq,
+      </if>
+      <if test="isweixin != null" >
+        isweixin,
+      </if>
+      <if test="isweibo != null" >
+        isweibo,
+      </if>
+      <if test="registerip != null" >
+        registerip,
+      </if>
+      <if test="registerdevice != null" >
+        registerdevice,
+      </if>
+      <if test="weibouid != null" >
+        weibouid,
+      </if>
+      <if test="wechatuid != null" >
+        wechatuid,
+      </if>
+      <if test="qquid != null" >
+        qquid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="vipexpiredtime != null" >
+        vipexpiredtime,
+      </if>
+      <if test="personid != null" >
+        personid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isvip != null" >
+        #{isvip,jdbcType=INTEGER},
+      </if>
+      <if test="isqq != null" >
+        #{isqq,jdbcType=VARCHAR},
+      </if>
+      <if test="isweixin != null" >
+        #{isweixin,jdbcType=VARCHAR},
+      </if>
+      <if test="isweibo != null" >
+        #{isweibo,jdbcType=VARCHAR},
+      </if>
+      <if test="registerip != null" >
+        #{registerip,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdevice != null" >
+        #{registerdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="weibouid != null" >
+        #{weibouid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatuid != null" >
+        #{wechatuid,jdbcType=VARCHAR},
+      </if>
+      <if test="qquid != null" >
+        #{qquid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="vipexpiredtime != null" >
+        #{vipexpiredtime,jdbcType=VARCHAR},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    update bs_personuser
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        registertime = #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isvip != null" >
+        isvip = #{isvip,jdbcType=INTEGER},
+      </if>
+      <if test="isqq != null" >
+        isqq = #{isqq,jdbcType=VARCHAR},
+      </if>
+      <if test="isweixin != null" >
+        isweixin = #{isweixin,jdbcType=VARCHAR},
+      </if>
+      <if test="isweibo != null" >
+        isweibo = #{isweibo,jdbcType=VARCHAR},
+      </if>
+      <if test="registerip != null" >
+        registerip = #{registerip,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdevice != null" >
+        registerdevice = #{registerdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="weibouid != null" >
+        weibouid = #{weibouid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatuid != null" >
+        wechatuid = #{wechatuid,jdbcType=VARCHAR},
+      </if>
+      <if test="qquid != null" >
+        qquid = #{qquid,jdbcType=VARCHAR},
+      </if>
+      <if test="vipexpiredtime != null" >
+        vipexpiredtime = #{vipexpiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personid != null" >
+        personid = #{personid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    update bs_personuser
+    set name = #{name,jdbcType=VARCHAR},
+      registertime = #{registertime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      isvip = #{isvip,jdbcType=INTEGER},
+      isqq = #{isqq,jdbcType=VARCHAR},
+      isweixin = #{isweixin,jdbcType=VARCHAR},
+      isweibo = #{isweibo,jdbcType=VARCHAR},
+      registerip = #{registerip,jdbcType=VARCHAR},
+      registerdevice = #{registerdevice,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryTalphone" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    update bs_personuser
+    set password = #{password,jdbcType=VARCHAR}
+    where telephone = #{telephone,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="loginWithEscrowAccount" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.personuser.model.PersonUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_personuser
+    where
+    <if test="weibouid != null" >
+        weibouid = #{weibouid,jdbcType=VARCHAR}
+    </if>
+    <if test="wechatuid != null" >
+        wechatuid = #{wechatuid,jdbcType=VARCHAR}
+    </if>
+    <if test="qquid != null" >
+        qquid = #{qquid,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.personuser.dao.PersonPayHistotyMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.personuser.model.PersonPayHistoty" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="receipt_amount" property="receipt_amount" jdbcType="DOUBLE" />
+    <result column="costdevice" property="costdevice" jdbcType="VARCHAR" />
+    <result column="costnumber" property="costnumber" jdbcType="VARCHAR" />
+    <result column="costtype" property="costtype" jdbcType="VARCHAR" />
+    <result column="requestip" property="requestip" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="refundTime" property="refundTime" jdbcType="TIMESTAMP" />
+    <result column="refund_fee" property="refund_fee" jdbcType="DOUBLE" />
+    <result column="costTime" property="costTime" jdbcType="TIMESTAMP" />
+    <result column="personid" property="personid" jdbcType="VARCHAR" />
+    <result column="ordernumber" property="ordernumber" jdbcType="VARCHAR" />
+    <result column="paynumber" property="paynumber" jdbcType="VARCHAR" />
+    <result column="viptype" property="viptype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, receipt_amount, costdevice, costnumber, costtype, requestip, status, refundTime, refund_fee, 
+    costTime, personid, ordernumber, paynumber, viptype
+  </sql>
+  <select id="selectPayHistotyByOrderNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_person_payhistoty
+    where ordernumber = #{ordernumber,jdbcType=VARCHAR}
+  </select>
+  <insert id="insertPayHistoty" parameterType="com.bayside.personopinion.personuser.model.PersonPayHistoty" >
+    insert into bs_person_payhistoty
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="receipt_amount != null" >
+        receipt_amount,
+      </if>
+      <if test="costdevice != null" >
+        costdevice,
+      </if>
+      <if test="costnumber != null" >
+        costnumber,
+      </if>
+      <if test="costtype != null" >
+        costtype,
+      </if>
+      <if test="requestip != null" >
+        requestip,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="refundTime != null" >
+        refundTime,
+      </if>
+      <if test="refund_fee != null" >
+        refund_fee,
+      </if>
+      <if test="costTime != null" >
+        costTime,
+      </if>
+      <if test="personid != null" >
+        personid,
+      </if>
+      <if test="ordernumber != null" >
+        ordernumber,
+      </if>
+      <if test="paynumber != null" >
+        paynumber,
+      </if>
+      <if test="viptype != null" >
+        viptype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="receipt_amount != null" >
+        #{receipt_amount,jdbcType=DOUBLE},
+      </if>
+      <if test="costdevice != null" >
+        #{costdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="costnumber != null" >
+        #{costnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costtype != null" >
+        #{costtype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestip != null" >
+        #{requestip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundTime != null" >
+        #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refund_fee != null" >
+        #{refund_fee,jdbcType=DOUBLE},
+      </if>
+      <if test="costTime != null" >
+        #{costTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernumber != null" >
+        #{ordernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paynumber != null" >
+        #{paynumber,jdbcType=INTEGER},
+      </if>
+      <if test="viptype != null" >
+        #{viptype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updatePayHistoty" parameterType="com.bayside.personopinion.personuser.model.PersonPayHistoty" >
+    update bs_person_payhistoty
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="receipt_amount != null" >
+        receipt_amount = #{receipt_amount,jdbcType=DOUBLE},
+      </if>
+      <if test="costdevice != null" >
+        costdevice = #{costdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="costnumber != null" >
+        costnumber = #{costnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costtype != null" >
+        costtype = #{costtype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestip != null" >
+        requestip = #{requestip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundTime != null" >
+        refundTime = #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refund_fee != null" >
+        refund_fee = #{refund_fee,jdbcType=DOUBLE},
+      </if>
+      <if test="costTime != null" >
+        costTime = #{costTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personid != null" >
+        personid = #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernumber != null" >
+        ordernumber = #{ordernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paynumber != null" >
+        paynumber = #{paynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="viptype != null" >
+        viptype = #{viptype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

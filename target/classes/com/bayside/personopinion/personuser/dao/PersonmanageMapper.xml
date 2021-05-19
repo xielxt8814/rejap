@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.personuser.dao.PersonmanageMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.personuser.model.Personmanage" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="originaddress" property="originaddress" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="post" property="post" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="commonaccount" property="commonaccount" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="isenable" property="isenable" jdbcType="BIT" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="addressprovince" property="addressprovince" jdbcType="VARCHAR" />
+    <result column="addresscity" property="addresscity" jdbcType="VARCHAR" />
+    <result column="originprovince" property="originprovince" jdbcType="VARCHAR" />
+    <result column="origincity" property="origincity" jdbcType="VARCHAR" />
+    <result column="birth" property="birth" jdbcType="TIMESTAMP" />
+    <result column="userparentid" property="userparentid" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="INTEGER" />
+    <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name, gender, address, originaddress, company, post, age, industry, 
+    commonaccount, starttime, endtime, isenable, userid, addressprovince, addresscity, originprovince, origincity, birth, userparentid, tag, imgurl
+  </sql>
+  <select id="selectPersonmanage" resultMap="BaseResultMap" parameterType="com.bayside.personopinion.personuser.model.Personmanage" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_personmanage
+    where tag = #{tag,jdbcType=VARCHAR}
+    LIMIT ${start},${num}
+  </select>
+  <insert id="insertSelective" parameterType="com.bayside.personopinion.personuser.model.Personmanage">
+    insert into bs_personmanage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="originaddress != null">
+        originaddress,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="commonaccount != null">
+        commonaccount,
+      </if>
+      <if test="starttime != null">
+        starttime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="isenable != null">
+        isenable,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="addressprovince != null">
+        addressprovince,
+      </if>
+      <if test="addresscity != null">
+        addresscity,
+      </if>
+      <if test="originprovince != null">
+        originprovince,
+      </if>
+      <if test="origincity != null">
+        origincity,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="userparentid != null">
+        userparentid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="originaddress != null">
+        #{originaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="commonaccount != null">
+        #{commonaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isenable != null">
+        #{isenable,jdbcType=BIT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+       <if test="addressprovince != null">
+        #{addressprovince,jdbcType=VARCHAR},
+      </if>
+       <if test="addresscity != null">
+        #{addresscity,jdbcType=VARCHAR},
+      </if>
+       <if test="originprovince != null">
+        #{originprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="origincity != null">
+        #{origincity,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userparentid != null">
+        #{userparentid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

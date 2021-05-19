@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bayside.personopinion.personuser.dao.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.bayside.personopinion.personuser.model.Feedback" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="questiontype" property="questiontype" jdbcType="VARCHAR" />
+    <result column="problemdescription" property="problemdescription" jdbcType="LONGVARCHAR" />
+    <result column="imgurls" property="imgurls" jdbcType="VARCHAR" />
+    <result column="adminid" property="adminid" jdbcType="VARCHAR" />
+    <result column="reply" property="reply" jdbcType="LONGVARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="replytime" property="replytime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, questiontype, problemdescription, imgurls, adminid, reply, createtime, replytime
+  </sql>
+  <insert id="insertFeedback" parameterType="com.bayside.personopinion.personuser.model.Feedback" >
+    insert into bs_person_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="questiontype != null" >
+        questiontype,
+      </if>
+      <if test="problemdescription != null" >
+        problemdescription,
+      </if>
+      <if test="imgurls != null" >
+        imgurls,
+      </if>
+      <if test="adminid != null" >
+        adminid,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="replytime != null" >
+        replytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="questiontype != null" >
+        #{questiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="problemdescription != null" >
+        #{problemdescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgurls != null" >
+        #{imgurls,jdbcType=VARCHAR},
+      </if>
+      <if test="adminid != null" >
+        #{adminid,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replytime != null" >
+        #{replytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
